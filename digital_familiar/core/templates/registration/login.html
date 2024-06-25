@@ -8,7 +8,7 @@
 {% if user.is_authenticated %}
     <p>You are already logged in as <b>{{ user.username }}</b>. Please log out if you wish to 
         log into another account</p>
-        <form method="post" action="{% url 'accounts:logout' %}">
+        <form method="post" action="{% url 'logout' %}">
             {% csrf_token %}
             <button type="submit">logout</button>
         </form>
@@ -18,9 +18,9 @@
         {{ form.as_p }}
         <button type="submit">Log In</button>
     </form>
-    <a href="{% url 'accounts:signup' %}">Sign Up</a>
-    <a href="{% url 'accounts:password_reset' %}">Reset password</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
+    <a href="{% url 'password_reset' %}">Reset password</a>
 {% endif %}
 
-<a href="{% url 'core:landing' %}">Back</a>
+<a href="{% url 'home_page' %}">Back</a>
 {% endblock %}

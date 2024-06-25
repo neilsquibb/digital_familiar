@@ -1,10 +1,9 @@
-from django.urls import path
+from django.urls import path, include
 
-from .views import landing, profile
-
-app_name = "core"
+from .views import home_page, SignUpView
 
 urlpatterns = [
-    path("", landing, name="landing"),
-    path("", profile, name="profile")
+    path("accounts/", include("django.contrib.auth.urls")),
+    path("signup/", SignUpView.as_view(), name="signup"),
+    path("", home_page, name="home_page"),
 ]
