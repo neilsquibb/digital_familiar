@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Familiar{% endblock %}
+
+{% block content %}
+<h1>Party Hub</h1>
+
+<p>Party Hub for <b>{{ party.party_name }}</b></p>
+
+<h3>Dungeon Master</h3>
+<p>{{user.username}}</p>
+
+<h3>Party Memebers</h3>
+<ul>
+    {% for member in party_members %}
+        <li>{{ member.user }}</li>
+    {% endfor %}
+</ul>
+
+{% if party.party_owner == request.user.profile %}
+    {% if request.user.profile in party_members %}
+        <a href="{% url 'party_leave' party.pk %}">Leave Party</a>
+    {% else %}
+        <a href="{% url 'party_join' party.pk %}">Join Party</a>
+    {% endif %}
+{% endif %}
+
+<!--
+if any of my characters are members of this party:
+    "your character <character> is a memeber of this party"
+    display leave party button
+else
+    "You are not a member of this party. Ask one of the members for the join code"
+    display join party buttons
+-->
+
+<!--
+if any of my characters are members of this party:
+    Party share and join code info
+-->
+
+<br><br><br><br>
+<a href="{% url 'party_edit' party.pk %}">Edit Party</a>
+<a href="{% url 'party_delete' party.pk %}">Delete Party</a>
+<br><br>
+<a href="{% url 'home_page' %}">Back to Profile</a>
+{% endblock %}

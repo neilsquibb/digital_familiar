@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Familiar{% endblock %}
+
+{% block content %}
+<h1>Party delete</h1>
+
+<p>Are you sure you wish to delete {{ party.party_name }}?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete {{ party.party_name }} for good</button>
+</form>
+
+<a href="{% url 'party_hub' party.pk %}">Cancel</a>
+{% endblock %}

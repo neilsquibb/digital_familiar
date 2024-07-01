@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Familiar{% endblock %}
+
+{% block content %}
+<h1>Character delete</h1>
+
+<p>Are you sure you wish to delete {{ character.character_name }}?</p>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Delete {{ character.character_name }} for good</button>
+</form>
+
+<a href="{% url 'character_sheet' character.pk %}">Cancel</a>
+{% endblock %}

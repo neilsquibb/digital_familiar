@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Familiar{% endblock %}
+
+{% block content %}
+<h1>Party join</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Join</button>
+</form>
+
+<a href="{% url 'party_hub' party.pk %}">Back to Party</a>
+{% endblock %}

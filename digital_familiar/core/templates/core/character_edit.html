@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}Digital Familiar{% endblock %}
+
+{% block content %}
+<h1>Character edit</h1>
+
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+</form>
+
+<a href="{% url 'character_sheet' character.pk %}">Back to Character</a>
+{% endblock %}

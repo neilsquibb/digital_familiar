@@ -1,12 +1,14 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h2>Change Password</h2>
+{% block title %}Digital Familiar{% endblock %}
 
-<form method="post">
+{% block content %}
+<h1>Character create</h1>
+
+<form method="POST">
     {% csrf_token %}
     {{ form.as_p }}
-    <button type="submit">Change</button>
+    <button type="submit">Create</button>
 </form>
 
 <a href="{% url 'home_page' %}">Back to Profile</a>
